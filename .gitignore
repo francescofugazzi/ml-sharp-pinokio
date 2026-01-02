@@ -1,0 +1,25 @@
+# Agent and IDE rules
+.clinerules
+.cursorrules
+.geminiignore
+.windsurfrules
+AGENTS.MD
+CLAUDE.MD
+ENVIRONMENT
+GEMINI.MD
+QWEN.MD
+
+# Logs and Cache
+logs/
+cache/
+
+# App related
+app/outputs/
+app/temp_proc/
+app/env/
+app/ml-sharp/
+
+# Standard Python
+__pycache__/
+*.py[cod]
+*$py.class

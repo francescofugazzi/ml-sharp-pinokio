@@ -1,0 +1,221 @@
+h1 {
+    text-align: center;
+}
+
+/* Custom job list styling */
+.job-list-container {
+    height: calc(100vh - 200px) !important;
+    max-height: none !important;
+    overflow-y: auto;
+    padding: 8px;
+    margin-top: 32px;
+    border: 1px solid var(--border-color-primary);
+    border-radius: 8px;
+    background-color: var(--background-fill-primary);
+    /* Optional matches theme */
+}
+
+.job-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color-primary);
+    border-radius: 8px;
+    background: var(--background-fill-secondary);
+    cursor: pointer;
+    gap: 15px;
+    transition: background 0.2s;
+    user-select: none;
+    /* Prevent text selection */
+}
+
+.job-list-item:hover {
+    background: var(--background-fill-primary);
+}
+
+.job-list-item.selected {
+    border-color: var(--color-accent);
+    background: var(--background-fill-primary);
+}
+
+.job-list-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.job-list-item .job-info {
+    flex: 1;
+    min-width: 0;
+    /* Enable text truncation in flex child */
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.job-list-item .job-name {
+    font-weight: bold;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.job-list-item .job-meta {
+    color: var(--body-text-color-subdued);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Delete button - appears on hover */
+.job-list-item .delete-btn {
+    display: none;
+    background: rgba(255, 80, 80, 0.9);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.job-list-item:hover .delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-list-item .delete-btn:hover {
+    background: rgba(255, 50, 50, 1);
+}
+
+/* Selected state */
+.job-list-item.selected {
+    border-color: var(--color-accent);
+    background: var(--background-fill-primary);
+    box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* Hide the control elements but keep them in DOM */
+.hidden-controls {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Hide delete X buttons on file list items in gr.File component */
+.file-preview button[aria-label="Remove"],
+.file-preview button[title="Remove"],
+.file-preview .file-delete,
+.file-preview button svg[aria-hidden="true"] {
+    display: none !important;
+}
+
+/* Delete confirmation modal */
+.delete-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.delete-modal-overlay.visible {
+    display: flex;
+}
+
+.delete-modal-box {
+    background: var(--background-fill-primary);
+    border: 1px solid var(--border-color-primary);
+    border-radius: 16px;
+    padding: 24px 32px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.2s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.delete-modal-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.delete-modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.delete-modal-message {
+    color: var(--body-text-color-subdued);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.delete-modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.delete-modal-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.delete-modal-btn.cancel {
+    background: var(--background-fill-secondary);
+    color: var(--body-text-color);
+}
+
+.delete-modal-btn.cancel:hover {
+    background: var(--border-color-primary);
+}
+
+.delete-modal-btn.confirm {
+    background: #e53935;
+    color: white;
+}
+
+.delete-modal-btn.confirm:hover {
+    background: #c62828;
+}

@@ -1,0 +1,37 @@
+{
+    "title": "WebUI for ML-Sharp (3DGS)",
+    "description": "One-click 3D Gaussian Splatting generation from a single image.",
+    "icon": "icon.png",
+    "links": [
+        {
+            "title": "Contact & Social",
+            "links": [
+                {
+                    "title": "X",
+                    "value": "https://x.com/franzipol"
+                },
+                {
+                    "title": "GitHub Profile",
+                    "value": "https://github.com/francescofugazzi"
+                },
+                {
+                    "title": "LinkedIn",
+                    "value": "https://www.linkedin.com/in/franzipol"
+                },
+                {
+                    "title": "Website",
+                    "value": "https://links.franzipol.com/"
+                }
+            ]
+        },
+        {
+            "title": "Resources",
+            "links": [
+                {
+                    "title": "ML-Sharp Repository",
+                    "value": "https://github.com/apple/ml-sharp"
+                }
+            ]
+        }
+    ]
+}
