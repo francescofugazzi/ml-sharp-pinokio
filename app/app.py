@@ -274,10 +274,6 @@ def predict(image_path, do_render_video):
     original_name = os.path.basename(image_path)
     safe_name, ext = os.path.splitext(original_name)
     
-    # 1. Save to Inputs Library (REMOVED)
-    # input_storage = os.path.join(INPUTS_DIR, f"{safe_name}_{ts}{ext}")
-    # shutil.copy(image_path, input_storage)
-    
     # 2. Create Job Folder
     job_name = f"{safe_name}_{ts}"
     job_dir = os.path.join(OUTPUTS_DIR, job_name)
@@ -722,16 +718,6 @@ def load_job_details_by_name(job_name):
     def predict_and_refresh(image_path, do_render_video):
         if is_system_busy():
             return get_busy_message(), gr.update(), None, None
-            
-        # We should probably lock here too? 
-        # Since predict is synchronous (except for yield which we don't have here yet), 
-        # but wait, this function IS synchronous and blocking in the UI unless queue=True?
-        # Assuming queue=True default.
-        # Ideally we should generate a job ID and add to running_tasks, but predict creates the folder name.
-        # For now, let's just assume predict manages itself, BUT valid point: 
-        # If I run predict, I am busy.
-        # But I can't easily know the job name BEFORE predict returns it (unless I refactor predict).
-        # Let's just Block if busy.
         
         result = predict(image_path, do_render_video)
         log_msg = result[0]
