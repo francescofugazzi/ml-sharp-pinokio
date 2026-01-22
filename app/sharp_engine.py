@@ -71,7 +71,7 @@ def get_best_video_writer(path, fps=30):
     """
     codec_priority = []
     
-    if torch.cuda.is_available():
+    if torch.cuda.is_available() and not sys.platform.startswith("linux"):
         codec_priority.append('h264_nvenc')
     elif torch.backends.mps.is_available():
         codec_priority.append('h264_videotoolbox')
